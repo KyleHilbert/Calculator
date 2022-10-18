@@ -7,6 +7,8 @@ body {
   display: flex;
   justify-content: center;
   background-color: darkolivegreen;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
 div.mainContainer {
@@ -58,8 +60,28 @@ button.light {
   background-color: #3b3b3b;
 }
 
+button.dark:hover {
+  background-color: #3b3b3b;
+}
+
+button.light:hover {
+  background-color: #323232;
+}
+
+button.light:active {
+  background-color: #202020;
+}
+
 button.equal {
   background-color: #4cc2ff;
+}
+
+button.equal:hover {
+  background-color: #3cabe2;
+}
+
+button.equal:active {
+  background-color: #2892c7;
 }
 
 span.answer {
@@ -69,5 +91,9 @@ span.answer {
 span.calcText {
   color: white;
   font-size: 18px;
-  font-weight: bold;
+}
+
+span.calcEqual {
+  color: black;
+  font-size: 18px;
 }
