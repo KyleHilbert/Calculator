@@ -9,10 +9,17 @@ body {
   background-color: darkolivegreen;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  background-image: radial-gradient(
+    circle,
+    #051937,
+    #002464,
+    #002d92,
+    #0032bf,
+    #122feb
+  );
 }
 
 div.mainContainer {
-  background-color: darkgreen;
   width: 80%;
   height: 820px;
   display: flex;

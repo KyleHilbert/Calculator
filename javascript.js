@@ -1,5 +1,5 @@
 function addition(num1, num2) {
-  return num1 + num2;
+  return parseInt(num1) + parseInt(num2);
 }
 
 function subtraction(num1, num2) {
@@ -32,6 +32,9 @@ function operate(operator, num1, num2) {
 
 function display() {
   const result = document.querySelector(".answer");
+  let num1;
+  let num2;
+  let operator;
   const equation = document.querySelector(".equation");
 
   const buttons = document.querySelectorAll("button");
@@ -40,28 +43,47 @@ function display() {
       const display = button.innerText;
 
       if (isNaN(display)) {
+        if (button.id === "equals") {
+          equation.textContent = num1 + " " + operator + " " + num2 + " = ";
+          result.textContent = operate(operator, num1, num2);
+          num1 = result.textContent;
+          num2 = undefined;
+          operator = undefined;
+        }
         if (button.id === "clearAll") {
           equation.textContent = "\u2002";
-          result.textContent = "\u2002";
+          result.textContent = "0";
+          num1 = undefined;
+          num2 = undefined;
+          operator = undefined;
         } else if (button.id === "plus") {
-          equation.textContent = result.textContent + " + ";
+          operator = "+";
+          equation.textContent = num1 + " + ";
         } else if (button.id === "minus") {
-          equation.textContent = result.textContent + " - ";
+          operator = "-";
+          equation.textContent = num1 + " - ";
         }
       } else {
-        result.textContent = display;
+        if (operator === undefined) {
+          if (result.innerText === "0") {
+            result.innerText = display;
+            num1 = display;
+          } else {
+            num1 += display;
+            result.innerText = num1;
+          }
+        } else {
+          if (num2 === undefined) {
+            num2 = display;
+          } else {
+            num2 += display;
+          }
+          result.innerText = num2;
+          equation.textContent = num1 + " " + operator + " " + num2;
+        }
       }
     });
   });
 }
 
 display();
-//console.log(operate("+", 2, 4));
-//console.log(operate("+", -2, 4));
-//console.log(operate("-", 2, 4));
-//console.log(operate("-", -2, 4));
-//console.log(operate("*", 2, 4));
-//console.log(operate("*", -2, 4));
-//console.log(operate("/", 2, 4));
-//console.log(operate("/", -2, 4));
-//console.log(operate("/", 2, 0));
