@@ -32,6 +32,7 @@ function operate(operator, num1, num2) {
 
 function display() {
   const result = document.querySelector(".answer");
+  const equation = document.querySelector(".equation");
 
   const buttons = document.querySelectorAll("button");
   buttons.forEach((button) => {
@@ -39,7 +40,14 @@ function display() {
       const display = button.innerText;
 
       if (isNaN(display)) {
-        //fix later, when not a num
+        if (button.id === "clearAll") {
+          equation.textContent = "\u2002";
+          result.textContent = "\u2002";
+        } else if (button.id === "plus") {
+          equation.textContent = result.textContent + " + ";
+        } else if (button.id === "minus") {
+          equation.textContent = result.textContent + " - ";
+        }
       } else {
         result.textContent = display;
       }

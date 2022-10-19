@@ -45,8 +45,9 @@ section.result {
   grid-row-start: 1;
   grid-row-end: 4;
   display: flex;
-  justify-content: right;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
   font-size: 30px;
   padding: 10px;
   font-weight: bold;
@@ -86,6 +87,12 @@ button.equal:active {
 
 span.answer {
   color: white;
+}
+
+span.equation {
+  color: #929292;
+  font-size: 12px;
+  padding: 5px;
 }
 
 span.calcText {
