@@ -35,6 +35,7 @@ function display() {
   let num1;
   let num2;
   let operator;
+  let displayOperator;
   const equation = document.querySelector(".equation");
 
   const buttons = document.querySelectorAll("button");
@@ -44,7 +45,8 @@ function display() {
 
       if (isNaN(display)) {
         if (button.id === "equals") {
-          equation.textContent = num1 + " " + operator + " " + num2 + " = ";
+          equation.textContent =
+            num1 + " " + displayOperator + " " + num2 + " = ";
           result.textContent = operate(operator, num1, num2);
           num1 = result.textContent;
           num2 = undefined;
@@ -58,10 +60,20 @@ function display() {
           operator = undefined;
         } else if (button.id === "plus") {
           operator = "+";
-          equation.textContent = num1 + " + ";
+          displayOperator = button.textContent;
+          equation.textContent = num1 + displayOperator;
         } else if (button.id === "minus") {
           operator = "-";
-          equation.textContent = num1 + " - ";
+          displayOperator = button.textContent;
+          equation.textContent = num1 + displayOperator;
+        } else if (button.id === "divide") {
+          operator = "/";
+          displayOperator = button.textContent;
+          equation.textContent = num1 + displayOperator;
+        } else if (button.id === "multiply") {
+          operator = "*";
+          displayOperator = button.textContent;
+          equation.textContent = num1 + displayOperator;
         }
       } else {
         if (operator === undefined) {
@@ -79,7 +91,7 @@ function display() {
             num2 += display;
           }
           result.innerText = num2;
-          equation.textContent = num1 + " " + operator + " " + num2;
+          equation.textContent = num1 + " " + displayOperator + " " + num2;
         }
       }
     });
@@ -87,3 +99,9 @@ function display() {
 }
 
 display();
+
+// TODO
+// Reset after user hits equal and they hit a new number
+// Negative numbers
+// Clear last digit
+// Add comments and make variables better?
